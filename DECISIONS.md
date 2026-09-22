@@ -1,4 +1,4 @@
-//Sneha Patel
+**Sneha Patel**
 # Decisions
 
 Fill this in as part of your submission. Brief and specific beats long and
@@ -18,14 +18,14 @@ answers.
 
 ## 3. How did you handle errors and logging, and why those mechanisms?
 
-> For errors, I used `ResponseStatusException` to return appropriate HTTP status codes. Invalid request data returns `400 Bad Request`, while attempts to retrieve or delete an employee that does not exist return `404 Not Found`. I chose this approach because it is simple and sufficient for the scope of this API without introducing additional exception-handling classes.
->I did not add application logging beyond the logging already provided by Spring Boot. For a production system, I would add structured logging around employee operations and failures, including the operation being performed and relevant employee UUIDs, while avoiding sensitive employee data.
+> For errors, I used `ResponseStatusException` to return appropriate HTTP status codes. Invalid employee data returns `400 Bad Request`, missing employees return `404 Not Found`, and malformed UUIDs are rejected by Spring's request parameter conversion with `400 Bad Request`. I chose this approach because it is simple and sufficient for the scope of this API without introducing additional exception-handling classes.
+>I added operational logging for employee creation, deletion, and failed UUID lookups. The logs use employee UUIDs to identify operations without logging unnecessary employee information such as email, salary, or request bodies.
 
 ## 4. Where the brief left a decision to you, what did you decide?
 
 > I created a service layer so that business logic is separated from the HTTP/controller layer. Employees are stored in an in-memory `ConcurrentHashMap` keyed by UUID because the challenge does not require a persistence layer.
 >I also created a `CreateEmployeeRequest` DTO rather than accepting an `Employee` directly. The request contains only values the client should provide. The service generates the employee UUID and derives `fullName` from `firstName` and `lastName`.
->I added basic validation for required names and valid salary and age values. Invalid input results in `400 Bad Request`.
+>I treated `firstName`, `lastName`, `salary`, `age`, `jobTitle`, `email`, and `contractHireDate` as required create fields, while `contractTerminationDate` remains optional as specified in the brief. I also reject negative salaries and non-positive ages. Invalid input results in `400 Bad Request`.required names and valid salary and age values. Invalid input results in `400 Bad Request`.
 
 
 ## 5. What did you deliberately choose *not* to do?

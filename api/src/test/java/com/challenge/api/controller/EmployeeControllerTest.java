@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.challenge.api.model.CreateEmployeeRequest;
 import com.challenge.api.model.Employee;
 import com.challenge.api.service.EmployeeService;
+import java.time.Instant;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,9 @@ class EmployeeControllerTest {
         request.setLastName("Patel");
         request.setSalary(85000);
         request.setAge(23);
+        request.setJobTitle("Software Engineer");
+        request.setEmail("sneha@example.com");
+        request.setContractHireDate(Instant.parse("2026-09-21T00:00:00Z"));
 
         Employee employee = employeeService.createEmployee(request);
 
@@ -100,7 +104,8 @@ class EmployeeControllerTest {
                     "salary": 85000,
                     "age": 23,
                     "jobTitle": "Software Engineer",
-                    "email": "sneha@example.com"
+                    "email": "sneha@example.com",
+                    "contractHireDate": "2026-09-21T00:00:00Z"
                 }
                 """;
 
@@ -117,6 +122,9 @@ class EmployeeControllerTest {
         request.setLastName("Patel");
         request.setSalary(85000);
         request.setAge(23);
+        request.setJobTitle("Software Engineer");
+        request.setEmail("sneha@example.com");
+        request.setContractHireDate(Instant.parse("2026-09-21T00:00:00Z"));
 
         Employee employee = employeeService.createEmployee(request);
 
@@ -140,6 +148,9 @@ class EmployeeControllerTest {
         request.setLastName("Patel");
         request.setSalary(85000);
         request.setAge(23);
+        request.setJobTitle("Software Engineer");
+        request.setEmail("sneha@example.com");
+        request.setContractHireDate(Instant.parse("2026-09-21T00:00:00Z"));
 
         employeeService.createEmployee(request);
 
@@ -158,6 +169,9 @@ class EmployeeControllerTest {
         request.setLastName("Patel");
         request.setSalary(85000);
         request.setAge(23);
+        request.setJobTitle("Software Engineer");
+        request.setEmail("sneha@example.com");
+        request.setContractHireDate(Instant.parse("2026-09-21T00:00:00Z"));
 
         employeeService.createEmployee(request);
 
@@ -171,5 +185,11 @@ class EmployeeControllerTest {
     void searchEmployeesShouldReturnBadRequestWhenNameIsMissing() throws Exception {
 
         mockMvc.perform(get("/api/v1/employee/search")).andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void getEmployeeByUuidShouldReturnBadRequestForInvalidUuid() throws Exception {
+
+        mockMvc.perform(get("/api/v1/employee/not-a-uuid")).andExpect(status().isBadRequest());
     }
 }

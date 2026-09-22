@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.challenge.api.service.EmployeeServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-22T03:15:56" hostname="Sneha-2.local" time="0.004">
+<testsuite name="com.challenge.api.service.EmployeeServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-22T03:48:21" hostname="Sneha-2.local" time="0.006">
   <properties/>
-  <testcase name="getAllEmployeesShouldInitiallyBeEmpty()" classname="com.challenge.api.service.EmployeeServiceTest" time="0.001"/>
+  <testcase name="getAllEmployeesShouldInitiallyBeEmpty()" classname="com.challenge.api.service.EmployeeServiceTest" time="0.002"/>
   <testcase name="getEmployeeByUuidShouldReturnEmployee()" classname="com.challenge.api.service.EmployeeServiceTest" time="0.001"/>
   <testcase name="deleteEmployeeShouldRemoveEmployee()" classname="com.challenge.api.service.EmployeeServiceTest" time="0.001"/>
-  <testcase name="createEmployeeShouldCreateAndStoreEmployee()" classname="com.challenge.api.service.EmployeeServiceTest" time="0.0"/>
+  <testcase name="createEmployeeShouldCreateAndStoreEmployee()" classname="com.challenge.api.service.EmployeeServiceTest" time="0.001"/>
   <testcase name="getEmployeeByUuidShouldThrowWhenEmployeeDoesNotExist()" classname="com.challenge.api.service.EmployeeServiceTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
+  <system-out><![CDATA[2026-09-21T23:48:21.387-04:00  INFO 32126 --- [entry-level-java-challenge] [    Test worker] c.challenge.api.service.EmployeeService  : Created employee with UUID 843b2948-2850-43c8-b71e-5664f85f31d2
+2026-09-21T23:48:21.389-04:00  INFO 32126 --- [entry-level-java-challenge] [    Test worker] c.challenge.api.service.EmployeeService  : Created employee with UUID 97ec9f9b-49c2-4039-814c-0f5b8c690836
+2026-09-21T23:48:21.389-04:00  INFO 32126 --- [entry-level-java-challenge] [    Test worker] c.challenge.api.service.EmployeeService  : Deleted employee with UUID 97ec9f9b-49c2-4039-814c-0f5b8c690836
+2026-09-21T23:48:21.389-04:00  INFO 32126 --- [entry-level-java-challenge] [    Test worker] c.challenge.api.service.EmployeeService  : Created employee with UUID 4d820570-4bf0-4905-9ab9-5ec06708d3ad
+2026-09-21T23:48:21.391-04:00  WARN 32126 --- [entry-level-java-challenge] [    Test worker] c.challenge.api.service.EmployeeService  : Employee not found for UUID 5c31b3c8-a001-4556-a9c9-2e1fec6d7dfc
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
